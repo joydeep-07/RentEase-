@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
-import Fake from "./components/Fake";
+import ColorTest from "./components/ColorTest";
 
 const App = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -15,7 +15,7 @@ const App = () => {
   }, [darkMode]);
   return (
     <>
-      <Fake />
+      <ColorTest/>
     </>
   );
 };

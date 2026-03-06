@@ -3,57 +3,101 @@
 /* LIGHT MODE */
 :root {
   /* Backgrounds */
-  --bg-main: #FEFAE0;          /* Cornsilk */
-  --bg-secondary: #FAEDCD;     /* Papaya Whip */
+  --bg-main: #fafaf7;
+  --bg-secondary: #f4f4ef;
+  --bg-tertiary: #ededE6;
+  --bg-card: #ffffff;
+
   --bg-gradient: linear-gradient(
     135deg,
-    #FEFAE0,
-    #E9EDC9,
-    #CCD5AE
+    #fafaf7,
+    #eef0e8,
+    #e3e6d9
   );
 
   /* Text */
-  --text-main: #3a3a3a;
-  --text-secondary: #6b6b6b;
+  --text-main: #2f2f2f;
+  --text-secondary: #5f5f5f;
+  --text-muted: #8c8c8c;
 
-  /* Accent Colors (Orangish) */
-  --accent-primary: #ff8420;   /* Bright Orange */
-  --accent-secondary: #F97316; /* Soft Orange */
+  /* Primary Accent (Brand Orange) */
+  --accent-primary: #ff7a1a;
+  --accent-secondary: #fb923c;
+
+  /* Additional Accent Colors */
+  --accent-pink: #ec4899;
+  --accent-purple: #8b5cf6;
+  --accent-blue: #3b82f6;
+  --accent-green: #22c55e;
+
+  /* Ecommerce Status */
+  --sale: #ef4444;
+  --success: #22c55e;
+  --warning: #facc15;
+  --info: #38bdf8;
 
   /* Borders */
-  --border-light: #E9EDC9;
+  --border-light: #e6e6df;
+  --border-soft: #eeeeea;
+
+  /* Shadows */
+  --shadow-soft: 0 6px 18px rgba(0,0,0,0.06);
+  --shadow-hover: 0 10px 25px rgba(0,0,0,0.1);
 }
+
 
 /* DARK MODE */
 .dark {
   /* Backgrounds */
   --bg-main: #111111;
-  --bg-secondary: #24261f;
+  --bg-secondary: #1b1b1b;
+  --bg-tertiary: #252525;
+  --bg-card: #1a1a1a;
+
   --bg-gradient: linear-gradient(
     135deg,
-    #1c1e18,
-    #2c2f25,
-    #3a3f32
+    #141414,
+    #1f1f1f,
+    #2c2c2c
   );
 
   /* Text */
-  --text-main: #FAEDCD;
-  --text-secondary: #E9EDC9;
+  --text-main: #f5f5f5;
+  --text-secondary: #d4d4d4;
+  --text-muted: #9f9f9f;
 
-  /* Accent Colors (Brighter for dark) */
-  --accent-primary: #ff8229;
-  --accent-secondary: #FB923C;
+  /* Accent */
+  --accent-primary: #ff7a1a;
+  --accent-secondary: #fb923c;
+
+  /* Extra Accent */
+  --accent-pink: #f472b6;
+  --accent-purple: #a78bfa;
+  --accent-blue: #60a5fa;
+  --accent-green: #4ade80;
+
+  /* Status */
+  --sale: #f87171;
+  --success: #4ade80;
+  --warning: #fde047;
+  --info: #7dd3fc;
 
   /* Borders */
-  --border-light: #3a3f32;
+  --border-light: #333333;
+  --border-soft: #2a2a2a;
+
+  /* Shadows */
+  --shadow-soft: 0 6px 18px rgba(0,0,0,0.35);
+  --shadow-hover: 0 10px 30px rgba(0,0,0,0.45);
 }
 
-/* SMOOTH TRANSITION  */
+/* SMOOTH TRANSITION */
 * {
   transition:
     background-color 0.4s ease,
     color 0.4s ease,
-    border-color 0.4s ease;
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
 @font-face {
@@ -64,7 +108,6 @@
 
 .heading-font {
   font-family: "Heading", sans-serif;
-
   font: italic;
 }
 
