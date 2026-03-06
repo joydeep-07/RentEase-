@@ -18,12 +18,12 @@ Students and working professionals frequently relocate for education or jobs. Pu
 
 ## ✨ Features
 
-- 🛋️ **Furniture Rentals** – Beds, tables, chairs, wardrobes, etc.
-- ⚡ **Appliance Rentals** – Refrigerators, washing machines, microwaves, etc.
-- 📅 **Monthly Subscription Model**
-- 💳 **Affordable Pricing**
-- 🔄 **Flexible Rental Periods**
-- 📦 **Easy Relocation Support**
-- 👤 **User Authentication**
-- 📱 **Responsive UI**
+-  **Furniture Rentals** – Beds, tables, chairs, wardrobes, etc.
+-  **Appliance Rentals** – Refrigerators, washing machines, microwaves, etc.
+-  **Monthly Subscription Model**
+-  **Affordable Pricing**
+-  **Flexible Rental Periods**
+-  **Easy Relocation Support**
+-  **User Authentication**
+-  **Responsive UI**
 
