@@ -16,7 +16,7 @@ Students and working professionals frequently relocate for education or jobs. Pu
 
 ---
 
-## ✨ Features
+##  Features
 
 -  **Furniture Rentals** – Beds, tables, chairs, wardrobes, etc.
 -  **Appliance Rentals** – Refrigerators, washing machines, microwaves, etc.
