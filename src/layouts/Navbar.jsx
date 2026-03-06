@@ -2,6 +2,7 @@ import React from "react";
 import ThemeToggle from "../components/ThemeToggle";
 import Search from "../components/Search";
 import { ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -22,7 +23,7 @@ const Navbar = () => {
         <Search />
 
         {/* Cart */}
-        <button
+        <Link to="/cart"
           className="relative flex items-center text-[var(--text-secondary)] gap-2 p-2"
         >
           <ShoppingCart size={19} />
@@ -39,7 +40,7 @@ const Navbar = () => {
           >
             2
           </span>
-        </button>
+        </Link>
 
         <ThemeToggle />
       </div>
