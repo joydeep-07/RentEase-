@@ -17,9 +17,12 @@ const Navbar = () => {
       sticky top-0 z-50"
     >
       {/* Logo */}
-      <Link to="/" className="text-xl font-semibold tracking-wide select-none">
-        <span className="text-[var(--text-main)]">Rent</span>
-        <span className="text-[var(--accent-primary)]">Ease</span>
+      <Link
+        to="/"
+        className="text-2xl font-fuzzy font-semibold tracking-wide select-none"
+      >
+        <span className="text-[var(--accent-primary)]">Rent</span>
+        <span className=" text-[var(--text-main)]">Ease</span>
       </Link>
 
       {/* Right Section */}
