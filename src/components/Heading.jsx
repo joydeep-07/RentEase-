@@ -3,7 +3,7 @@ import React from "react";
 const Heading = ({ small, heading }) => {
   return (
     <div className="flex justify-center flex-col items-center ">
-      <div className="px-4 w-full max-w-7xl">
+      <div className="w-full max-w-7xl">
         {/* Small Label */}
         {small && (
           <div className="">
