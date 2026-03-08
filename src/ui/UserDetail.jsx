@@ -18,7 +18,7 @@ const UserDetail = () => {
   const menuItems = [
     { label: "Profile", icon: Layout, path: "/profile" },
     { label: "Your Rents", icon: Package, path: "/rents" },
-    { label: "Add Product", icon: PlusSquare, path: "/add-product" },
+    { label: "Become a seller", icon: PlusSquare, path: "/seller" },
     { type: "divider" },
     { label: "Logout", icon: LogOut, danger: true },
   ];

@@ -9,6 +9,9 @@ import Cart from "./pages/Cart";
 import FurnitureDetail from "./pages/FurnitureDetail";
 import ColorTest from "./pages/ColorTest";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import Profile from "./pages/Profile";
+import SellerDashboard from "./pages/SellerDashboard";
+import Rents from "./pages/Rents";
 
 const App = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -32,6 +35,33 @@ const App = () => {
           element={
             <ProtectedRoute>
               <Cart />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="rents"
+          element={
+            <ProtectedRoute>
+             <Rents/>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="seller"
+          element={
+            <ProtectedRoute>
+              <SellerDashboard />
             </ProtectedRoute>
           }
         />
