@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Heading from "../components/Heading";
 import { TextField, Avatar, IconButton, Box, Button } from "@mui/material";
 import { PhotoCamera } from "@mui/icons-material";
-import { User } from "lucide-react";
+import { Camera, User } from "lucide-react";
 
 const inputStyles = {
   "& .MuiInputLabel-root": {
@@ -129,53 +129,58 @@ const Profile = () => {
             </div>
 
             <div className="mt-4 flex justify-end">
-              <button className=" border border-[var(--border-light)] text-[var(--text-secondary)] hover:text-[var(--accent-secondary)] rounded-sm bg-[var(--bg-secondary)] py-2 px-5">Save Changes</button>
+              <button className=" border border-[var(--border-light)] text-[var(--text-secondary)] hover:text-[var(--accent-secondary)] rounded-sm bg-[var(--bg-secondary)] py-2 px-5">
+                Save Changes
+              </button>
             </div>
           </div>
         </Box>
 
         {/* IMAGE RIGHT */}
         <div className="flex flex-col items-center gap-3">
-          <Avatar
-            className="border-2 border-[var(--border-light)]/50 "
-            src={image ? URL.createObjectURL(image) : ""}
-            sx={{
-              width: 140,
-              height: 140,
-
-              background: "var(--bg-secondary)",
-              color: "var(--text-secondary)",
-            }}
-          >
-            {!image && (
-              <User className="text-[var(--text-muted)]/50 " size={80} />
-            )}
-          </Avatar>
-
-          <label htmlFor="profile-upload">
-            <input
-              hidden
-              id="profile-upload"
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-            />
-
-            <IconButton
-              component="span"
+          <div className=" relative inline-block">
+            <Avatar
+              className="border-2 border-[var(--border-light)]/50"
+              src={image ? URL.createObjectURL(image) : ""}
               sx={{
-                background: "var(--accent-secondary)",
-                color: "#fff",
-                "&:hover": {
-                  background: "var(--accent-primary)",
-                },
+                width: 140,
+                height: 140,
+                background: "var(--bg-secondary)",
+                color: "var(--text-secondary)",
               }}
             >
-              <PhotoCamera />
-            </IconButton>
-          </label>
+              {!image && (
+                <User className="text-[var(--text-muted)]/50" size={80} />
+              )}
+            </Avatar>
 
-          <p className="text-sm text-[var(--text-secondary)] text-center">
+            <label
+              className="absolute bottom-0 right-2"
+              htmlFor="profile-upload"
+            >
+              <input
+                hidden
+                id="profile-upload"
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+              />
+
+              <IconButton
+                component="span"
+                sx={{
+                  background: "var(--accent-secondary)",
+                  color: "#fff",
+                  "&:hover": {
+                    background: "var(--accent-primary)",
+                  },
+                }}
+              >
+                <Camera size={15}/>
+              </IconButton>
+            </label>
+          </div>
+          <p className="text-sm text-[var(--text-secondary)] font-medium text-center">
             Upload Profile Image
           </p>
         </div>
