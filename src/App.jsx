@@ -14,6 +14,7 @@ import Rents from "./pages/Rents";
 import AddItem from "./pages/AddItem";
 import Allitem from "./pages/Allitem";
 import ProductDetails from "./pages/ProductDetails";
+import Products from "./pages/Products";
 
 const App = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -31,6 +32,7 @@ const App = () => {
       <Route path="/" element={<Root />}>
         <Route index element={<Home />} />
         <Route path="auth" element={<Auth />} />
+        <Route path="products" element={<Products />} />
 
         <Route
           path="cart"
