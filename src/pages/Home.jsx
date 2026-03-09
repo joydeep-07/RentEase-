@@ -1,11 +1,10 @@
 import React from 'react'
-import { data } from "../utils/data";
-import ItemCards from '../components/ItemCards';
+
 const Home = () => {
-    const furniture = data.filter((item) => item.category === "Furniture");
+    
   return (
-    <div>
-      <ItemCards items={furniture} limit={8} />
+    <div className='text-center text-3xl uppercase text-[var(--text-muted)] h-screen py-25'>
+     THIS IS HOME PAGE
     </div>
   );
 }

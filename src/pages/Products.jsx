@@ -43,7 +43,13 @@ const Products = () => {
       {filteredProducts.length > 0 && <ItemCards items={filteredProducts} />}
 
       {/* Suggestions */}
-      {category && <Suggestion category={category} />}
+      {category && (
+        <Suggestion
+          category={category}
+          query={query}
+          currentIds={filteredProducts.map((p) => p.id)}
+        />
+      )}
     </div>
   );
 };
