@@ -9,7 +9,7 @@ const Hero = () => {
     <>
       {/* HERO */}
       <section className="w-full px-4 sm:px-6 lg:px-8 pt-16 pb-10">
-        <div className="max-w-7xl mx-auto flex flex-col gap-8">
+        <div className="max-w-8xl px-15 mx-auto flex flex-col gap-8">
           {/* Small badge */}
           <div className="flex items-center gap-2 text-xs uppercase tracking-[0.15em] opacity-60">
             <span className="w-2 h-2 rounded-full bg-[var(--accent-primary)] animate-pulse"></span>

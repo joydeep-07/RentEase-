@@ -10,10 +10,10 @@ const Testimonials = () => {
   return (
     <>
       <section className="bg-[var(--bg-main)] py-16 px-4 md:px-8 flex items-center justify-center">
-        <div className="max-w-7xl w-full">
+        <div className="max-w-8xl px-15 mx-auto">
           <div className="mb-12">
             <h1 className="text-5xl font-heading font-medium text-[var(--text-main)] text-center md:text-start mb-4">
-             What people say
+              What people say
             </h1>
 
             <p className="text-[var(--text-secondary)] text-sm/6 text-center md:text-start mx-auto md:mx-0 max-w-md">
