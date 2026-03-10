@@ -14,7 +14,7 @@ const ProductDetails = () => {
     <div className="w-7xl py-10 px-6 mx-auto">
       {/* Breadcrumb */}
       <p className="text-[var(--text-secondary)]">
-        <Link to="/">Home</Link> / <Link to="/">Products</Link> /{" "}
+        <Link to="/">Home</Link> / <Link to="/products">Products</Link> /{" "}
         <span className="text-[var(--accent-primary)]">
           {product.productName}
         </span>

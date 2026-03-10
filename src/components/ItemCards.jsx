@@ -64,13 +64,13 @@ const ItemCards = ({ items = [], limit }) => {
   }, [visibleItems]);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
       {visibleItems.map((item, index) => (
         <div
           key={item.id}
           ref={(el) => (cardsRef.current[index] = el)}
           onClick={() => navigate(`/product-detail/${item.id}`)}
-          className="cursor-pointer group relative flex flex-col rounded-lg overflow-hidden
+          className="cursor-pointer group relative flex flex-col rounded-sm overflow-hidden
           border border-[var(--border-light)]
           bg-[var(--bg-secondary)]
           shadow-lg transition-all duration-300"
