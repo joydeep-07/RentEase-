@@ -130,7 +130,10 @@ const Products = () => {
               {Object.entries(groupedProducts).map(([category, items]) => (
                 <section key={category}>
                   <h2 className="text-3xl font-heading mb-6 text-[var(--text-main)]">
-                    Showing for <span className="text-[var(--accent-primary)] ">{category}s</span>
+                    Showing for{" "}
+                    <span className="text-[var(--accent-primary)] ">
+                      {category}s
+                    </span>
                   </h2>
 
                   <ItemCards items={items} />
@@ -145,9 +148,7 @@ const Products = () => {
               {Object.entries(groupedFilteredProducts).map(
                 ([category, items]) => (
                   <section className="mt-10" key={category}>
-                    <h2 className="text-2xl font-heading mb-6 text-[var(--text-main)]">
-                      {category}
-                    </h2>
+                   
 
                     <ItemCards items={items} />
                   </section>
