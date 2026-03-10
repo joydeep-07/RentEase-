@@ -16,6 +16,7 @@ import Allitem from "./pages/Allitem";
 import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
 import ScrollToTop from "./utils/ScrollToTop";
+import SmoothScroll from "./utils/SmoothScroll ";
 
 const App = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -30,6 +31,7 @@ const App = () => {
 
   return (
     <>
+    <SmoothScroll/>
     <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Root />}>
