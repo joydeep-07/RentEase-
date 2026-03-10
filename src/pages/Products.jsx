@@ -176,10 +176,10 @@ const closeMobileFilter = () => {
       <main className="flex-1">
         <div>
           {/* MOBILE FILTER BUTTON */}
-          <div className="lg:hidden border border-[var(--border-light)] flex justify-center mb-6">
+          <div className="lg:hidden border border-[var(--border-light)]/40 bg-[var(--bg-secondary)]/50 flex justify-center mb-6">
             <button
               onClick={openMobileFilter}
-              className="flex items-center gap-2 px-5 py-2 w-1/2 border-r border-[var(--border-light)] justify-center text-[var(--text-secondary)] shadow-md"
+              className="flex items-center gap-2 px-5 py-2 w-1/2 border-r border-[var(--border-light)]/90 justify-center text-[var(--text-secondary)] shadow-md"
             >
               <SlidersHorizontal size={18} />
               Filters
