@@ -196,7 +196,7 @@ const closeMobileFilter = () => {
 
           {/* header */}
           {query && filteredProducts.length > 0 && (
-            <header>
+            <header className="px-4 md:px-0">
               <h1 className="text-2xl font-heading sm:text-3xl text-[var(--text-main)]">
                 Results for{" "}
                 <span className="text-[var(--accent-primary)]">{query}</span>
@@ -226,7 +226,7 @@ const closeMobileFilter = () => {
           )}
 
           {!filtersActive && (
-            <div className="space-y-14 mb-6 md:mr-6">
+            <div className="space-y-14 px-4 md:px-0 mb-6 md:mr-6">
               {Object.entries(groupedProducts).map(([category, items]) => (
                 <section key={category}>
                   <h2 className="text-3xl font-heading mb-6 text-[var(--text-main)]">
@@ -243,7 +243,7 @@ const closeMobileFilter = () => {
           )}
 
           {filtersActive && filteredProducts.length > 0 && (
-            <div className="space-y-14 mb-6 md:mr-6">
+            <div className="space-y-14 px-4 md:px-0 mb-6 md:mr-6">
               {Object.entries(groupedFilteredProducts).map(
                 ([category, items]) => (
                   <section className="mt-10" key={category}>
@@ -254,7 +254,7 @@ const closeMobileFilter = () => {
             </div>
           )}
 
-          <section className="border-t border-[var(--border-light)]/20 md:mr-6">
+          <section className="px-4 md:px-0 md:mr-6">
             <Suggestion
               category={firstCategory}
               query={query}

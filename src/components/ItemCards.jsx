@@ -64,7 +64,7 @@ const ItemCards = ({ items = [], limit }) => {
   }, [visibleItems]);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
       {visibleItems.map((item, index) => (
         <div
           key={item.id}
@@ -95,18 +95,29 @@ const ItemCards = ({ items = [], limit }) => {
           </div>
 
           {/* Info */}
-          <div className="p-4 flex justify-between items-start gap-3">
-            <div>
-              <p className="text-[var(--text-main)] text-base font-semibold">
+          <div className="p-3 sm:p-4 flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-3">
+            <div className="min-w-0">
+              <p className="text-[var(--text-main)] text-sm sm:text-base font-semibold truncate">
                 {item.productName}
               </p>
 
-              <p className="text-[var(--text-secondary)] text-xs mt-1">
+              {/* Mobile price */}
+              <p className="sm:hidden text-[var(--accent-primary)] font-semibold text-xs mt-1">
+                ₹ {item.pricePerDay}
+                <span className="text-[var(--text-secondary)] text-[10px]">
+                  {" "}
+                  / day
+                </span>
+              </p>
+
+              {/* Brand + condition (hidden on mobile) */}
+              <p className="hidden sm:block text-[var(--text-secondary)] text-xs mt-1">
                 {item.brand} • {item.condition}
               </p>
             </div>
 
-            <p className="text-[var(--accent-primary)] font-semibold text-sm whitespace-nowrap">
+            {/* Desktop price */}
+            <p className="hidden sm:block text-[var(--accent-primary)] font-semibold text-lg whitespace-nowrap">
               ₹ {item.pricePerDay}
               <span className="text-[var(--text-secondary)] text-xs">
                 {" "}
