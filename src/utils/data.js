@@ -46,8 +46,6 @@ import sofa8 from "../assets/sofa/sofa8.jpg";
 import sofa9 from "../assets/sofa/sofa9.jpg";
 import sofa10 from "../assets/sofa/sofa10.jpg";
 
-// ... imports remain the same
-
 export const data = [
   // BEDS
   {

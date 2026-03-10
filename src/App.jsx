@@ -15,6 +15,7 @@ import AddItem from "./pages/AddItem";
 import Allitem from "./pages/Allitem";
 import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
+import ScrollToTop from "./utils/ScrollToTop";
 
 const App = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -28,70 +29,73 @@ const App = () => {
   }, [darkMode]);
 
   return (
-    <Routes>
-      <Route path="/" element={<Root />}>
-        <Route index element={<Home />} />
-        <Route path="auth" element={<Auth />} />
-        <Route path="products" element={<Products />} />
+    <>
+    <ScrollToTop/>
+      <Routes>
+        <Route path="/" element={<Root />}>
+          <Route index element={<Home />} />
+          <Route path="auth" element={<Auth />} />
+          <Route path="products" element={<Products />} />
 
-        <Route
-          path="cart"
-          element={
-            <ProtectedRoute>
-              <Cart />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="cart"
+            element={
+              <ProtectedRoute>
+                <Cart />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="profile"
-          element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="add-item"
-          element={
-            <ProtectedRoute>
-              <AddItem />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="add-item"
+            element={
+              <ProtectedRoute>
+                <AddItem />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="all-item"
-          element={
-            <ProtectedRoute>
-              <Allitem />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="all-item"
+            element={
+              <ProtectedRoute>
+                <Allitem />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="rents"
-          element={
-            <ProtectedRoute>
-              <Rents />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="rents"
+            element={
+              <ProtectedRoute>
+                <Rents />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route
-          path="seller"
-          element={
-            <ProtectedRoute>
-              <SellerDashboard />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="seller"
+            element={
+              <ProtectedRoute>
+                <SellerDashboard />
+              </ProtectedRoute>
+            }
+          />
 
-        <Route path="test" element={<ColorTest />} />
-        <Route path="/product-detail/:id" element={<ProductDetails />} />
-      </Route>
-    </Routes>
+          <Route path="test" element={<ColorTest />} />
+          <Route path="/product-detail/:id" element={<ProductDetails />} />
+        </Route>
+      </Routes>
+    </>
   );
 };
 
