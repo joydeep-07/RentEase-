@@ -17,6 +17,15 @@ const Products = () => {
     inStock: false,
   });
 
+  // Check if filters are active
+  const filtersActive =
+    query ||
+    filters.category ||
+    filters.brand ||
+    filters.condition ||
+    filters.inStock ||
+    filters.price !== 500;
+
   // Search filtering
   const searchFiltered = query
     ? data.filter(
@@ -33,6 +42,7 @@ const Products = () => {
   const categories = [
     ...new Set(searchFiltered.map((item) => item.category)),
   ].sort();
+
   const brands = [...new Set(searchFiltered.map((item) => item.brand))].sort();
 
   // Apply sidebar filters
@@ -46,7 +56,21 @@ const Products = () => {
     );
   });
 
-  // Get category for suggestion
+  // Group ALL products by category (default view)
+  const groupedProducts = data.reduce((acc, item) => {
+    if (!acc[item.category]) acc[item.category] = [];
+    acc[item.category].push(item);
+    return acc;
+  }, {});
+
+  // Group filtered products by category
+  const groupedFilteredProducts = filteredProducts.reduce((acc, item) => {
+    if (!acc[item.category]) acc[item.category] = [];
+    acc[item.category].push(item);
+    return acc;
+  }, {});
+
+  // Suggestion category
   const firstCategory =
     filteredProducts.length > 0
       ? filteredProducts[0].category
@@ -68,10 +92,10 @@ const Products = () => {
         </div>
       </aside>
 
-      {/* Main content */}
+      {/* Main */}
       <main className="flex-1">
         <div>
-          {/* Header */}
+          {/* Header for search */}
           {query && (
             <header>
               <h1 className="text-2xl font-heading sm:text-3xl text-[var(--text-main)]">
@@ -100,14 +124,39 @@ const Products = () => {
             </div>
           )}
 
-          {/* Product grid */}
-          {filteredProducts.length > 0 && (
-            <section className="py-8 mr-6">
-              <ItemCards items={filteredProducts} />
-            </section>
+          {/* DEFAULT VIEW → Category wise */}
+          {!filtersActive && (
+            <div className="space-y-14 mb-6 mr-6">
+              {Object.entries(groupedProducts).map(([category, items]) => (
+                <section key={category}>
+                  <h2 className="text-3xl font-heading mb-6 text-[var(--text-main)]">
+                    Showing for <span className="text-[var(--accent-primary)] ">{category}s</span>
+                  </h2>
+
+                  <ItemCards items={items} />
+                </section>
+              ))}
+            </div>
           )}
 
-          {/* Suggestions (ALWAYS SHOW) */}
+          {/* FILTERED VIEW */}
+          {filtersActive && filteredProducts.length > 0 && (
+            <div className="space-y-14 mb-6 mr-6">
+              {Object.entries(groupedFilteredProducts).map(
+                ([category, items]) => (
+                  <section className="mt-10" key={category}>
+                    <h2 className="text-2xl font-heading mb-6 text-[var(--text-main)]">
+                      {category}
+                    </h2>
+
+                    <ItemCards items={items} />
+                  </section>
+                ),
+              )}
+            </div>
+          )}
+
+          {/* Suggestions */}
           <section className="border-t border-[var(--border-light)]/20 mr-6">
             <Suggestion
               category={firstCategory}

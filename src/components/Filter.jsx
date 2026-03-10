@@ -1,21 +1,50 @@
 import { FilterIcon, ChevronDown, RotateCcw } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import gsap from "gsap";
 
 const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
-  const [openSections, setOpenSections] = useState({
-    price: true,
-    category: true,
-    brand: false,
-    condition: false,
-    stock: true,
-  });
+  const [openSection, setOpenSection] = useState("price");
+
+  const sectionsRef = {
+    price: useRef(null),
+    category: useRef(null),
+    brand: useRef(null),
+    condition: useRef(null),
+  };
 
   const toggleSection = (section) => {
-    setOpenSections((prev) => ({ ...prev, [section]: !prev[section] }));
+    if (openSection === section) return;
+
+    // close current
+    if (sectionsRef[openSection]?.current) {
+      gsap.to(sectionsRef[openSection].current, {
+        height: 0,
+        opacity: 0,
+        duration: 0.35,
+        ease: "power2.inOut",
+      });
+    }
+
+    // open new
+    if (sectionsRef[section]?.current) {
+      gsap.fromTo(
+        sectionsRef[section].current,
+        { height: 0, opacity: 0 },
+        {
+          height: "auto",
+          opacity: 1,
+          duration: 0.4,
+          ease: "power2.out",
+        },
+      );
+    }
+
+    setOpenSection(section);
   };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
     setFilters((prev) => ({
       ...prev,
       [name]: type === "checkbox" ? checked : value,
@@ -34,19 +63,17 @@ const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
 
   return (
     <div
-      className={`
-        w-90 min-w-[320px] h-[calc(100vh-5rem)] 
+      className="
+        w-90 min-w-[320px] h-[calc(100vh-5rem)]
         overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--accent-primary)]/40
         scrollbar-track-transparent p-6 sticky top-20
         transition-all duration-300 mb-6
-      `}
+      "
     >
       {/* Header */}
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-3">
-          <div className="">
-            <FilterIcon size={22} className="text-[var(--accent-primary)]" />
-          </div>
+          <FilterIcon size={22} className="text-[var(--accent-primary)]" />
           <h2 className="text-2xl font-semibold tracking-tight text-[var(--text-main)]">
             Filters
           </h2>
@@ -61,7 +88,6 @@ const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
         </button>
       </div>
 
-      {/* Sections */}
       <div className="space-y-5">
         {/* Price */}
         <div className="bg-black/5 dark:bg-white/5 rounded-sm p-5 border border-white/5">
@@ -74,12 +100,19 @@ const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
             </h3>
             <ChevronDown
               size={18}
-              className={`text-[var(--text-secondary)] transition-transform ${openSections.price ? "rotate-180" : ""}`}
+              className={`text-[var(--text-secondary)] transition-transform ${
+                openSection === "price" ? "rotate-180" : ""
+              }`}
             />
           </button>
 
-          {openSections.price && (
-            <div className="mt-5 space-y-4 animate-fadeIn">
+          <div
+            ref={sectionsRef.price}
+            className={`overflow-hidden ${
+              openSection !== "price" && "h-0 opacity-0"
+            }`}
+          >
+            <div className="mt-5 space-y-4">
               <input
                 type="range"
                 min="0"
@@ -88,18 +121,12 @@ const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
                 name="price"
                 value={filters.price}
                 onChange={handleChange}
-                className={`
-                  w-full h-1.5 bg-gradient-to-r from-[var(--accent-primary)]/30 to-[var(--accent-primary)] 
+                className="
+                  w-full h-1.5 bg-gradient-to-r from-[var(--accent-primary)]/30 to-[var(--accent-primary)]
                   rounded-full appearance-none cursor-pointer
-                  [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 
-                  [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:bg-[var(--accent-primary)]
-                  [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:shadow-lg
-                  [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white
-                  [&::-webkit-slider-thumb]:cursor-pointer
-                  [&::-moz-range-thumb]:w-5 [&::-moz-range-thumb]:h-5
-                  [&::-moz-range-thumb]:bg-[var(--accent-primary)] [&::-moz-range-thumb]:rounded-full
-                `}
+                "
               />
+
               <div className="flex justify-between text-xs font-medium">
                 <span className="text-[var(--text-secondary)]">₹0</span>
                 <span className="text-[var(--accent-primary)] font-semibold">
@@ -107,7 +134,7 @@ const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
                 </span>
               </div>
             </div>
-          )}
+          </div>
         </div>
 
         {/* Category */}
@@ -121,12 +148,19 @@ const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
             </h3>
             <ChevronDown
               size={18}
-              className={`text-[var(--text-secondary)] transition-transform ${openSections.category ? "rotate-180" : ""}`}
+              className={`text-[var(--text-secondary)] transition-transform ${
+                openSection === "category" ? "rotate-180" : ""
+              }`}
             />
           </button>
 
-          {openSections.category && (
-            <div className="mt-4 space-y-2.5 animate-fadeIn">
+          <div
+            ref={sectionsRef.category}
+            className={`overflow-hidden ${
+              openSection !== "category" && "h-0 opacity-0"
+            }`}
+          >
+            <div className="mt-4 space-y-2.5">
               <label className="flex items-center gap-3 text-sm cursor-pointer group">
                 <input
                   type="radio"
@@ -136,7 +170,7 @@ const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
                   onChange={handleChange}
                   className="w-4 h-4 accent-[var(--accent-primary)]"
                 />
-                <span className="text-[var(--text-main)] group-hover:text-[var(--accent-primary)] transition-colors">
+                <span className="group-hover:text-[var(--accent-primary)] transition-colors">
                   All Categories
                 </span>
               </label>
@@ -154,13 +188,13 @@ const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
                     onChange={handleChange}
                     className="w-4 h-4 accent-[var(--accent-primary)]"
                   />
-                  <span className="text-[var(--text-main)] group-hover:text-[var(--accent-primary)] transition-colors">
+                  <span className="group-hover:text-[var(--accent-primary)] transition-colors">
                     {cat}
                   </span>
                 </label>
               ))}
             </div>
-          )}
+          </div>
         </div>
 
         {/* Brand */}
@@ -174,12 +208,19 @@ const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
             </h3>
             <ChevronDown
               size={18}
-              className={`text-[var(--text-secondary)] transition-transform ${openSections.brand ? "rotate-180" : ""}`}
+              className={`text-[var(--text-secondary)] transition-transform ${
+                openSection === "brand" ? "rotate-180" : ""
+              }`}
             />
           </button>
 
-          {openSections.brand && (
-            <div className="mt-4 space-y-2.5 animate-fadeIn">
+          <div
+            ref={sectionsRef.brand}
+            className={`overflow-hidden ${
+              openSection !== "brand" && "h-0 opacity-0"
+            }`}
+          >
+            <div className="mt-4 space-y-2.5">
               <label className="flex items-center gap-3 text-sm cursor-pointer group">
                 <input
                   type="radio"
@@ -213,7 +254,7 @@ const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
                 </label>
               ))}
             </div>
-          )}
+          </div>
         </div>
 
         {/* Condition */}
@@ -227,12 +268,19 @@ const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
             </h3>
             <ChevronDown
               size={18}
-              className={`text-[var(--text-secondary)] transition-transform ${openSections.condition ? "rotate-180" : ""}`}
+              className={`text-[var(--text-secondary)] transition-transform ${
+                openSection === "condition" ? "rotate-180" : ""
+              }`}
             />
           </button>
 
-          {openSections.condition && (
-            <div className="mt-4 space-y-2.5 animate-fadeIn">
+          <div
+            ref={sectionsRef.condition}
+            className={`overflow-hidden ${
+              openSection !== "condition" && "h-0 opacity-0"
+            }`}
+          >
+            <div className="mt-4 space-y-2.5">
               {["New", "Like New", "Good", "Used"].map((cond) => (
                 <label
                   key={cond}
@@ -252,7 +300,7 @@ const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
                 </label>
               ))}
             </div>
-          )}
+          </div>
         </div>
 
         {/* Stock */}
@@ -263,27 +311,13 @@ const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
               name="inStock"
               checked={filters.inStock}
               onChange={handleChange}
-              className="w-5 h-5 rounded border-gray-300 text-[var(--accent-primary)] focus:ring-[var(--accent-primary)]/30"
+              className="w-5 h-5"
             />
             <span className="text-sm font-medium text-[var(--text-main)] group-hover:text-[var(--accent-primary)] transition-colors">
               In Stock Only
             </span>
           </label>
         </div>
-      </div>
-
-      {/* Apply button */}
-      <div className="mt-8 pt-6 border-t border-white/10">
-        <button
-          className={`
-            w-full py-3.5 px-6 bg-[var(--accent-primary)] text-white 
-            font-medium rounded-sm shadow-lg shadow-[var(--accent-primary)]/20
-            hover:bg-[var(--accent-primary)]/90 hover:shadow-xl
-            active:scale-[0.98] transition-all duration-200
-          `}
-        >
-          Apply Filters
-        </button>
       </div>
     </div>
   );
