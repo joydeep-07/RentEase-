@@ -15,13 +15,13 @@ export default function Search({ onSearch }) {
 
     navigate(`/products?q=${query}`);
     if (onSearch) onSearch();
-    setQuery(""); // optional: clear input after search
+    setQuery(""); 
   };
 
   const handleSuggestionClick = (suggestion) => {
     navigate(`/products?q=${suggestion}`);
     if (onSearch) onSearch();
-    setQuery(""); // closes suggestions + optional clear
+    setQuery(""); 
   };
 
   return (

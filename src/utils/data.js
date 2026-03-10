@@ -657,7 +657,7 @@ export const data = [
   {
     id: 31,
     userId: "user2",
-    productName: "IKEA JÄTTEBO Sectional Sofa",
+    productName: "Wooden Sofa Set, three seater",
     itemType: "Sofa",
     brand: "IKEA",
     category: "Furniture",
