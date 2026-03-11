@@ -17,6 +17,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
 import ScrollToTop from "./utils/ScrollToTop";
 import SmoothScroll from "./utils/SmoothScroll ";
+import Admin from "./pages/Admin";
 
 const App = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
@@ -48,7 +49,6 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="rents"
             element={
@@ -57,7 +57,6 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-
           <Route
             path="profile"
             element={
@@ -66,33 +65,12 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-
-          <Route
-            path="seller"
-            element={
-              <ProtectedRoute>
-                <SellerDashboard />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="add-item"
-            element={
-              <ProtectedRoute>
-                <AddItem />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="all-item"
-            element={
-              <ProtectedRoute>
-                <Allitem />
-              </ProtectedRoute>
-            }
-          />
+          ============= FOR ADMIN ===========
+          <Route path="admin" element={<Admin />} />
+          <Route path="seller" element={<SellerDashboard />} />
+          <Route path="add-item" element={<AddItem />} />
+          <Route path="all-item" element={<Allitem />} />
+          ============= FOR ADMIN ===========
         </Route>
       </Routes>
     </>
