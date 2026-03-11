@@ -54,7 +54,7 @@ const ProductDetails = () => {
 
           {/* Price */}
           <div className="mt-5 md:mt-6">
-            <p className="text-sm text-[var(--text-secondary)] line-through">
+            <p className="text-sm text-[var(--text-secondary)]">
               Deposit: ₹{product.securityDeposit}
             </p>
 
