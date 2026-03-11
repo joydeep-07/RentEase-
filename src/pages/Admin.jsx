@@ -4,11 +4,13 @@ import Lottie from "lottie-react";
 import Heartrate from "../assets/animation/admin.json";
 import { Checkbox } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginAdmin } from "../redux/slices/adminSlice";
 
 const Admin = () => {
   const otpRefs = useRef([]);
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [otpSent, setOtpSent] = useState(false);
   const [timer, setTimer] = useState(120);
@@ -53,16 +55,16 @@ const Admin = () => {
     setTimer(120);
   };
 
-  const handleLogin = () => {
-    const enteredOtp = otpRefs.current.map((input) => input.value).join("");
+ const handleLogin = () => {
+   const enteredOtp = otpRefs.current.map((input) => input.value).join("");
 
-    if (email === DEMO_EMAIL && enteredOtp === DEMO_OTP) {
-      navigate("/seller");
-    } else {
-      alert("Invalid email or OTP (Demo OTP: 123456)");
-    }
-  };
-
+   if (email === DEMO_EMAIL && enteredOtp === DEMO_OTP) {
+     dispatch(loginAdmin());
+     navigate("/seller");
+   } else {
+     alert("Invalid email or OTP (Demo OTP: 123456)");
+   }
+ };
   useEffect(() => {
     if (otpSent && timer > 0) {
       const interval = setInterval(() => setTimer((prev) => prev - 1), 1000);

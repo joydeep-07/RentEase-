@@ -8,6 +8,7 @@ import Auth from "./pages/Auth";
 import Cart from "./pages/Cart";
 import ColorTest from "./pages/ColorTest";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import AdminProtectedRoute from "./routes/AdminProtectedRoute";
 import Profile from "./pages/Profile";
 import SellerDashboard from "./pages/SellerDashboard";
 import Rents from "./pages/Rents";
@@ -34,13 +35,18 @@ const App = () => {
     <>
       <SmoothScroll />
       <ScrollToTop />
+
       <Routes>
         <Route path="/" element={<Root />}>
           <Route index element={<Home />} />
+
           <Route path="auth" element={<Auth />} />
           <Route path="products" element={<Products />} />
           <Route path="test" element={<ColorTest />} />
-          <Route path="/product-detail/:id" element={<ProductDetails />} />
+          <Route path="product-detail/:id" element={<ProductDetails />} />
+
+          {/* ============= USER PROTECTED ROUTES ============= */}
+
           <Route
             path="cart"
             element={
@@ -49,6 +55,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+
           <Route
             path="rents"
             element={
@@ -57,6 +64,7 @@ const App = () => {
               </ProtectedRoute>
             }
           />
+
           <Route
             path="profile"
             element={
@@ -65,12 +73,37 @@ const App = () => {
               </ProtectedRoute>
             }
           />
-          ============= FOR ADMIN ===========
+
+          {/* ============= ADMIN ROUTES ============= */}
+
           <Route path="admin" element={<Admin />} />
-          <Route path="seller" element={<SellerDashboard />} />
-          <Route path="add-item" element={<AddItem />} />
-          <Route path="all-item" element={<Allitem />} />
-          ============= FOR ADMIN ===========
+
+          <Route
+            path="seller"
+            element={
+              <AdminProtectedRoute>
+                <SellerDashboard />
+              </AdminProtectedRoute>
+            }
+          />
+
+          <Route
+            path="add-item"
+            element={
+              <AdminProtectedRoute>
+                <AddItem />
+              </AdminProtectedRoute>
+            }
+          />
+
+          <Route
+            path="all-item"
+            element={
+              <AdminProtectedRoute>
+                <Allitem />
+              </AdminProtectedRoute>
+            }
+          />
         </Route>
       </Routes>
     </>
