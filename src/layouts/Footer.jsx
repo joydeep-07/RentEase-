@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer className="bg-[var(--bg-secondary)] border-t border-[var(--border-light)]/50 py-14 px-6">
@@ -6,12 +8,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <div className="text-xl font-semibold tracking-wide">
-              <span className="text-[var(--text-main)]">Rent</span>
-              <span className="text-[var(--accent-primary)]">Ease</span>
-            </div>
-
-            <p className="text-sm text-[var(--text-secondary)] mt-5 leading-relaxed max-w-sm">
+            <Link
+              to="/"
+              className="text-xl md:text-2xl font-fuzzy font-semibold tracking-wide select-none"
+            >
+              <span className="text-[var(--accent-primary)]">Rent</span>
+              <span className="text-[var(--text-main)]">Ease</span>
+            </Link>
+            <p className="text-xs text-justify text-[var(--text-secondary)] mt-5 leading-relaxed max-w-sm">
               Rent premium furniture and home appliances at affordable monthly
               prices. Perfect for students and professionals who move frequently
               and prefer flexible living.
@@ -20,7 +24,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold text-[var(--text-main)]">
+            <h3 className="text-sm uppercase font-semibold text-[var(--text-main)]">
               Quick Links
             </h3>
 
@@ -42,7 +46,7 @@ export default function Footer() {
 
           {/* Categories */}
           <div>
-            <h3 className="text-sm font-semibold text-[var(--text-main)]">
+            <h3 className="text-sm uppercase font-semibold text-[var(--text-main)]">
               Categories
             </h3>
 
@@ -64,7 +68,7 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h3 className="text-sm font-semibold text-[var(--text-main)]">
+            <h3 className="text-sm uppercase font-semibold text-[var(--text-main)]">
               Get Rental Updates
             </h3>
 
