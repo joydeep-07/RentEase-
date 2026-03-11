@@ -1,5 +1,5 @@
 import React from 'react'
-import AdminNav from '../components/AdminNav'
+import AdminNav from '../admin/AdminNav'
 import AdminLogout from '../admin/AdminLogout';
 
 const SellerDashboard = () => {

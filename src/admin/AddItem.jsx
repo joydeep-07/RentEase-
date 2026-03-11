@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AdminNav from "../components/AdminNav";
+import AdminNav from "./AdminNav";
 
 import {
   Box,

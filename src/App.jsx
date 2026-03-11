@@ -12,13 +12,13 @@ import AdminProtectedRoute from "./routes/AdminProtectedRoute";
 import Profile from "./pages/Profile";
 import SellerDashboard from "./pages/SellerDashboard";
 import Rents from "./pages/Rents";
-import AddItem from "./pages/AddItem";
-import Allitem from "./pages/Allitem";
+import AddItem from "./admin/AddItem";
+import Allitem from "./admin/Allitem";
 import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
 import ScrollToTop from "./utils/ScrollToTop";
 import SmoothScroll from "./utils/SmoothScroll ";
-import Admin from "./pages/Admin";
+import Admin from "./admin/Admin";
 
 const App = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
