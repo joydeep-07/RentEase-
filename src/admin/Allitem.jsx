@@ -1,13 +1,18 @@
-import React from 'react'
-import AdminNav from '../admin/AdminNav'
+import React from "react";
+import AdminNav from "../admin/AdminNav";
+import { data } from "../utils/data";
+import AdminItemCards from "./AdminItemCards";
 
 const Allitem = () => {
   return (
     <div>
-      <AdminNav/>
-      <h1 className='py-15 uppercase text-center text-[var(--text-muted)] text-2xl'>All items visible here</h1>
-    </div>
-  )
-}
+      <AdminNav />
 
-export default Allitem
+      <div className="p-6 md:px-15">
+        <AdminItemCards items={data} />
+      </div>
+    </div>
+  );
+};
+
+export default Allitem;
