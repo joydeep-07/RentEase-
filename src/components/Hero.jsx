@@ -1,4 +1,4 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Hero = () => {
@@ -20,7 +20,7 @@ const Hero = () => {
           <h1 className="text-4xl sm:text-4xl md:text-5xl xl:text-6xl font-medium font-main leading-tight">
             Rent what you need{" "}
             <span className="text-[var(--accent-primary)]">
-              when you  need it
+              when you <br className="hidden md:block" /> need it
             </span>{" "}
             without buying.
           </h1>
@@ -35,18 +35,15 @@ const Hero = () => {
           <div className="flex flex-wrap gap-4 pt-2">
             <button
               onClick={() => navigate("/products")}
-              className="flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent-primary)] text-white text-sm font-medium hover:opacity-90 transition"
+              className=" relative overflow-hidden px-8 sm:px-10 md:px-7 py-4 sm:py-3.5 md:py-3 rounded-full font-medium tracking-[0.1em] text-[var(--text-main)] hover:text-[var(--accent-blue)] hover:bg-[var(--accent-blue)]/5 backdrop-blur-md border border-[var(--border-light)] hover:border-[var(--accent-blue)]/20 shadow-sm transition-all duration-500 ease-out group sm:w-auto"
             >
-              Browse Rentals
-              <ArrowRight className="w-4 h-4" />
+              <span className="flex items-center uppercase text-sm justify-center gap-2">
+               Browse Rentals <ChevronRight size={18}/>
+              </span>
             </button>
-
-          
           </div>
         </div>
       </section>
-
-     
     </>
   );
 };
