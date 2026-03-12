@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
 import { FaHeart } from "react-icons/fa";
@@ -6,6 +6,7 @@ import { FaHeart } from "react-icons/fa";
 const ItemCards = ({ items = [], limit }) => {
   const cardsRef = useRef([]);
   const navigate = useNavigate();
+  const [loadedImages, setLoadedImages] = useState({});
 
   const visibleItems = limit ? items.slice(0, limit) : items;
 
@@ -63,6 +64,10 @@ const ItemCards = ({ items = [], limit }) => {
     });
   }, [visibleItems]);
 
+  const handleImageLoad = (id) => {
+    setLoadedImages((prev) => ({ ...prev, [id]: true }));
+  };
+
   return (
     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
       {visibleItems.map((item, index) => (
@@ -86,11 +91,20 @@ const ItemCards = ({ items = [], limit }) => {
           </button>
 
           {/* Image */}
-          <div className="overflow-hidden">
+          <div className="relative overflow-hidden w-full h-52">
+            {/* Skeleton Loader */}
+            {!loadedImages[item.id] && (
+              <div className="absolute inset-0 animate-pulse bg-[var(--bg-main)]" />
+            )}
+
             <img
-              className="card-image w-full h-52 object-cover"
+              className={`card-image w-full h-52 object-cover transition-opacity duration-300 ${
+                loadedImages[item.id] ? "opacity-100" : "opacity-0"
+              }`}
+              loading="lazy"
               src={item.image}
               alt={item.productName}
+              onLoad={() => handleImageLoad(item.id)}
             />
           </div>
 
@@ -110,7 +124,6 @@ const ItemCards = ({ items = [], limit }) => {
                 </span>
               </p>
 
-              {/* Brand + condition (hidden on mobile) */}
               <p className="hidden sm:block text-[var(--text-secondary)] text-xs mt-1">
                 {item.brand} • {item.condition}
               </p>
