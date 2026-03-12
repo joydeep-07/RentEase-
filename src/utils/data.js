@@ -46,6 +46,11 @@ import sofa8 from "../assets/sofa/sofa8.jpg";
 import sofa9 from "../assets/sofa/sofa9.jpg";
 import sofa10 from "../assets/sofa/sofa10.jpg";
 
+// WASHING MACEHINE
+import wm1 from '../assets/wm/wm1.jpg';
+import wm2 from "../assets/wm/wm2.jpg";
+import wm3 from "../assets/wm/wm3.jpg";
+
 export const data = [
   // BEDS
   {
@@ -1200,6 +1205,89 @@ export const data = [
     description:
       "A traditional wooden settee perfect for entryways or small living spaces...",
     image: sofa10,
+    pricePerDay: 160,
+    securityDeposit: 2200,
+    totalStock: 1,
+    availableFrom: "2026-03-01",
+    availableTill: null,
+    featured: false,
+    active: true,
+    isOutOfStock: false,
+  },
+
+  // WASHING MACHINE
+  {
+    id: 41,
+    userId: "user2",
+    productName: "LG 7 Kg Fully Automatic Washing Machine",
+    itemType: "washing machine",
+    brand: "LG",
+    category: "Appliances",
+    condition: "Good",
+    keywords: [
+      "washing machine",
+      "lg",
+      "laundry",
+      "automatic",
+      "home appliance",
+    ],
+    description:
+      "Efficient 7 kg fully automatic washing machine ideal for small families and urban renters. Features multiple wash programs, quick wash mode, and energy-efficient performance for convenient everyday laundry.",
+    image: wm1,
+    pricePerDay: 160,
+    securityDeposit: 2200,
+    totalStock: 1,
+    availableFrom: "2026-03-01",
+    availableTill: null,
+    featured: false,
+    active: true,
+    isOutOfStock: false,
+  },
+  {
+    id: 42,
+    userId: "user2",
+    productName: "Samsung 6.5 Kg Top Load Washing Machine",
+    itemType: "washing machine",
+    brand: "Samsung",
+    category: "Appliances",
+    condition: "Good",
+    keywords: [
+      "washing machine",
+      "samsung",
+      "top load",
+      "laundry",
+      "appliance",
+    ],
+    description:
+      "Reliable 6.5 kg top load washing machine with powerful cleaning performance. Designed for everyday laundry needs with durable build quality and easy-to-use controls.",
+    image: wm2,
+    pricePerDay: 160,
+    securityDeposit: 2200,
+    totalStock: 1,
+    availableFrom: "2026-03-01",
+    availableTill: null,
+    featured: false,
+    active: true,
+    isOutOfStock: false,
+  },
+  {
+    id: 43,
+    userId: "user2",
+    productName: "Whirlpool 7.5 Kg Semi Automatic Washing Machine",
+    itemType: "washing machine",
+    brand: "Whirlpool",
+    category: "Appliances",
+    condition: "Good",
+    keywords: [
+      "washing machine",
+      "whirlpool",
+      "semi automatic",
+      "laundry",
+      "home appliance",
+    ],
+    description:
+      "Spacious 7.5 kg semi-automatic washing machine suitable for medium-sized households. Offers efficient washing performance with durable design and low water consumption.",
+    image: wm3,
     pricePerDay: 160,
     securityDeposit: 2200,
     totalStock: 1,
