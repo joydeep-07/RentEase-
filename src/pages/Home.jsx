@@ -4,6 +4,7 @@ import Testimonials from '../ui/Testimonials';
 import CurvedLoop from '../components/CurvedLoop';
 import Categories from '../ui/Categories';
 import WhyUs from '../ui/WhyUs';
+import Featured from '../ui/Featured';
 
 const Home = () => {
     
@@ -11,10 +12,10 @@ const Home = () => {
     <>
       <Hero />
       <Categories />
-
+      <Featured/>
       <CurvedLoop
         marqueeText="Rent what you need when you need it without buying."
-        speed={2}
+        speed={1}
         curveAmount={-310}
         direction="right"
         interactive

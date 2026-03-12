@@ -85,7 +85,7 @@ const WhyUs = () => {
             <span
               key={i}
               className="px-4 py-2 text-xs rounded-full
-              border border-[var(--border-light)]
+              border border-[var(--border-light)] tracking-wider
               bg-[var(--bg-secondary)]
               opacity-80"
             >
