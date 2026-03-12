@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
-
+import { Toaster } from "sonner";
 import Root from "./layouts/Root";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
@@ -35,7 +35,14 @@ const App = () => {
     <>
       <SmoothScroll />
       <ScrollToTop />
-
+      <Toaster
+        position="top-right"
+        // richColors
+        expand
+        theme="system"
+        visibleToasts={4}
+        duration={2000}
+      />
       <Routes>
         <Route path="/" element={<Root />}>
           <Route index element={<Home />} />

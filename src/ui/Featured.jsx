@@ -1,12 +1,16 @@
 import React from 'react'
+import { toast } from 'sonner';
 
 const Featured = () => {
+  const handleToast = () =>{
+    toast.success("Im ckicked")
+  }
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8 md:pt-16 pt-4 pb-10">
       <div className="max-w-8xl md:px-15 mx-auto flex flex-col gap-8">
         <div>
           {/* HEADER */}
-          <h2 className="text-3xl sm:text-3xl md:text-4xl xl:text-5xl font-medium font-main leading-tight mb-4">
+          <h2 onClick={handleToast} className="text-3xl cursor-pointer sm:text-3xl md:text-4xl xl:text-5xl font-medium font-main leading-tight mb-4">
             Our <span className="text-[var(--accent-primary)]">Featured {" "} </span>
             Products
           </h2>
