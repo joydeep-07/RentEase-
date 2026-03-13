@@ -3,14 +3,23 @@ import React, { useState } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart } from "../redux/slices/cartSlice";
+import EmptyCart from "../ui/EmptyCart";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const navigate = useNavigate();
   const [showAddress, setShowAddress] = useState(false);
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
   const products = cartItems;
 
-  return (
+  const goBack = () => {
+    navigate(-1);
+  };
+
+  return products.length === 0 ? (
+    <EmptyCart />
+  ) : (
     <div className="flex flex-col lg:flex-row py-10 md:py-16 max-w-7xl px-4 md:px-6 mx-auto text-[var(--text-main)] gap-10">
       {/* LEFT SIDE */}
       <div className="flex-1 w-full">
@@ -70,7 +79,10 @@ const Cart = () => {
             </button>
           </div>
         ))}
-        <button className="group cursor-pointer flex items-center mt-8 gap-2 text-[var(--accent-blue)] font-medium">
+        <button
+          onClick={goBack}
+          className="group cursor-pointer flex items-center mt-8 gap-2 text-[var(--accent-blue)] font-medium"
+        >
           <ChevronLeft size={18} />
           Continue Shopping
         </button>
