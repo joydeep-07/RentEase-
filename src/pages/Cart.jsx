@@ -1,58 +1,58 @@
 import { ChevronLeft, Trash } from "lucide-react";
 import React, { useState } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart } from "../redux/slices/cartSlice";
-import EmptyCart from "../ui/EmptyCart";
-import { useNavigate } from "react-router-dom";
-import SelectTenure from "../components/SelectTenure";
-
-import dayjs from "dayjs";
-
 const Cart = () => {
-  const navigate = useNavigate();
   const [showAddress, setShowAddress] = useState(false);
 
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const products = [
+    {
+      name: "Running Shoes",
+      description: [
+        "Lightweight and comfortable",
+        "Breathable mesh upper",
+        "Ideal for jogging and casual wear",
+      ],
+      offerPrice: 250,
+      price: 200,
+      quantity: 1,
+      size: 42,
+      image:
+        "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/card/productImage.png",
+      category: "Footwear",
+    },
+    {
+      name: "Running Shoes",
+      description: [
+        "Lightweight and comfortable",
+        "Breathable mesh upper",
+        "Ideal for jogging and casual wear",
+      ],
+      offerPrice: 250,
+      price: 200,
+      quantity: 1,
+      size: 42,
+      image:
+        "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/card/productImage2.png",
+      category: "Footwear",
+    },
+    {
+      name: "Running Shoes",
+      description: [
+        "Lightweight and comfortable",
+        "Breathable mesh upper",
+        "Ideal for jogging and casual wear",
+      ],
+      offerPrice: 250,
+      price: 200,
+      quantity: 1,
+      size: 42,
+      image:
+        "https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/card/productImage3.png",
+      category: "Footwear",
+    },
+  ];
 
-  const dispatch = useDispatch();
-  const { cartItems } = useSelector((state) => state.cart);
-  const products = cartItems;
-
-  const goBack = () => {
-    navigate(-1);
-  };
-
-  const openProduct = (id) => {
-    navigate(`/product-detail/${id}`);
-  };
-
-  /* ---------------- RENT CALCULATION ---------------- */
-
-  let totalDays = 0;
-
-  if (startDate && endDate) {
-    totalDays = endDate.diff(startDate, "day") + 1;
-  }
-
-  const totalRent = products.reduce((acc, item) => {
-    return acc + item.pricePerDay * totalDays;
-  }, 0);
-
-  const totalDeposit = products.reduce((acc, item) => {
-    return acc + item.securityDeposit;
-  }, 0);
-
-  const tax = (totalRent * 2) / 100;
-
-  const grandTotal = totalRent + totalDeposit + tax;
-
-  /* -------------------------------------------------- */
-
-  return products.length === 0 ? (
-    <EmptyCart />
-  ) : (
+  return (
     <div className="flex flex-col lg:flex-row py-10 md:py-16 max-w-7xl px-4 md:px-6 mx-auto text-[var(--text-main)] gap-10">
       {/* LEFT SIDE */}
       <div className="flex-1 w-full">
@@ -66,7 +66,7 @@ const Cart = () => {
         {/* HEADER */}
         <div className="hidden md:grid grid-cols-[2fr_1fr_1fr] text-[var(--accent-secondary)] text-base font-medium pb-3">
           <p className="text-left">Product Details</p>
-          <p className="text-center">Rent</p>
+          <p className="text-center">Subtotal</p>
           <p className="text-center">Action</p>
         </div>
 
@@ -76,54 +76,40 @@ const Cart = () => {
             className="grid grid-cols-[2fr_1fr_auto] md:grid-cols-[2fr_1fr_1fr] gap-4 md:gap-0 text-[var(--text-secondary)] items-start text-sm md:text-base font-medium pt-4 border-b border-[var(--border-light)] pb-4"
           >
             {/* PRODUCT INFO */}
-            <div className="flex items-start gap-4 md:gap-6">
-              <div
-                onClick={() => openProduct(product.id)}
-                className="cursor-pointer w-20 h-20 md:w-24 md:h-24 flex items-center justify-center 
-  border border-[var(--border-light)] rounded-lg overflow-hidden 
-  bg-[var(--bg-secondary)] "
-              >
+            <div className="flex items-start gap-3 md:gap-6">
+              <div className="cursor-pointer w-20 h-20 md:w-24 md:h-24 flex items-center justify-center border border-[var(--border-light)] rounded overflow-hidden bg-[var(--bg-secondary)]">
                 <img
-                  className="w-full h-full hover:scale-103 transition duration-300 ease-in-out object-cover"
+                  className="w-full h-full object-cover"
                   src={product.image}
-                  alt={product.productName}
+                  alt={product.name}
                 />
               </div>
 
-              <div className="flex flex-col gap-1">
-                <p className="font-semibold text-[var(--text-main)] leading-tight">
-                  {product.productName}
+              <div>
+                <p className="font-semibold text-[var(--text-main)]">
+                  {product.name}
                 </p>
 
-                <p className="text-sm text-[var(--text-secondary)]">
-                  {product.brand}
-                </p>
-
-                <span className="text-xs font-medium text-[var(--text-muted)]/70 ">
-                  Security Deposit: ₹{product.securityDeposit}
-                </span>
+                <div className="font-normal text-[var(--text-secondary)]">
+                  <p>
+                    Size: <span>{product.size || "N/A"}</span>
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* RENT */}
+            {/* SUBTOTAL */}
             <p className="text-center text-[var(--text-main)]">
-              ₹{product.pricePerDay} <span>/ day</span>
+              ${product.offerPrice * product.quantity}
             </p>
 
             {/* ACTION */}
-            <button
-              onClick={() => dispatch(removeFromCart(product.id))}
-              className="cursor-pointer mx-auto text-[var(--sale)]"
-            >
+            <button className="cursor-pointer mx-auto text-[var(--sale)]">
               <Trash size={18} />
             </button>
           </div>
         ))}
-
-        <button
-          onClick={goBack}
-          className="group cursor-pointer flex items-center mt-8 gap-2 text-[var(--accent-blue)] font-medium"
-        >
+        <button className="group cursor-pointer flex items-center mt-8 gap-2 text-[var(--accent-blue)] font-medium">
           <ChevronLeft size={18} />
           Continue Shopping
         </button>
@@ -144,8 +130,10 @@ const Cart = () => {
 
           <div className="relative flex justify-between items-start mt-2">
             <p className="text-[var(--text-secondary)]">
-              Vill - Alladi II, Post - Basudevpur Jemari, Asansol, Paschim
-              Bardhaman, West Bengal, India, 713335.
+              <p>
+               Vill - Alladi II, Post - Basudevpur Jemari, Asansol, Paschim Bardhaman,
+                West Bengal, India, 713335.
+              </p>
             </p>
 
             <button
@@ -157,24 +145,12 @@ const Cart = () => {
           </div>
         </div>
 
-        <hr className="border-[var(--border-light)] mb-4" />
-
-        <SelectTenure
-          startDate={startDate}
-          endDate={endDate}
-          setStartDate={setStartDate}
-          setEndDate={setEndDate}
-        />
+        <hr className="border-[var(--border-light)]" />
 
         <div className="text-[var(--text-secondary)] mt-4 space-y-2">
           <p className="flex justify-between">
-            <span>Price ({totalDays} days)</span>
-            <span>₹{totalRent}</span>
-          </p>
-
-          <p className="flex justify-between">
-            <span>Security Deposit</span>
-            <span>₹{totalDeposit}</span>
+            <span>Price</span>
+            <span>$20</span>
           </p>
 
           <p className="flex justify-between">
@@ -184,17 +160,17 @@ const Cart = () => {
 
           <p className="flex justify-between">
             <span>Tax (2%)</span>
-            <span>₹{tax.toFixed(2)}</span>
+            <span>$20</span>
           </p>
 
           <p className="flex justify-between text-lg font-medium mt-3 text-[var(--text-main)]">
             <span>Total Amount:</span>
-            <span>₹{grandTotal.toFixed(2)}</span>
+            <span>$20</span>
           </p>
         </div>
 
         <button className="w-full py-3 mt-6 cursor-pointer bg-[var(--accent-primary)] text-white font-medium hover:opacity-90 transition rounded">
-          Proceed to payment
+         Proceed to payment
         </button>
       </div>
     </div>
