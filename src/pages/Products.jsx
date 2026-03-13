@@ -136,13 +136,13 @@ const closeMobileFilter = () => {
           <div
             ref={overlayRef}
             onClick={closeMobileFilter}
-            className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 lg:hidden"
+            className="fixed inset-0 bg-black/60 z-40 lg:hidden"
           />
 
           {/* drawer */}
           <div
             ref={drawerRef}
-            className="fixed left-0 h-full w-[85vw] bg-[var(--bg-main)] z-50 shadow-2xl lg:hidden overflow-y-auto"
+            className="fixed left-0 h-full w-[80vw] bg-[var(--bg-main)] z-50 shadow-2xl lg:hidden overflow-y-auto"
           >
             {/* <div className="flex items-center justify-between p-4 border-b border-[var(--border-light)]">
               <h2 className="font-heading text-xl text-[var(--text-main)]">

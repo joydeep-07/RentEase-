@@ -83,7 +83,7 @@ const Filter = ({ filters, setFilters, categories = [], brands = [] }) => {
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-3">
           <FilterIcon size={22} className="text-[var(--accent-primary)]" />
-          <h2 className="text-2xl font-semibold tracking-tight text-[var(--text-main)]">
+          <h2 className="text-xl tracking-wider font-medium text-[var(--text-main)]">
             Filters
           </h2>
         </div>
