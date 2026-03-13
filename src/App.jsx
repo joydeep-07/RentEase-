@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
+
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
 import Root from "./layouts/Root";
 import Home from "./pages/Home";
@@ -27,7 +30,7 @@ import SmoothScroll from "./utils/SmoothScroll ";
 const App = () => {
   const darkMode = useSelector((state) => state.theme.darkMode);
 
-  // Apply dark class to html element
+  // Tailwind dark class
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -36,12 +39,25 @@ const App = () => {
     }
   }, [darkMode]);
 
+  // MUI Theme
+  const muiTheme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: darkMode ? "dark" : "light",
+        },
+      }),
+    [darkMode],
+  );
+
   return (
-    <>
+    <ThemeProvider theme={muiTheme}>
+      <CssBaseline />
+
       <SmoothScroll />
       <ScrollToTop />
 
-      {/* Toast Notifications */}
+      {/* Toast */}
       <Toaster
         position="top-right"
         expand
@@ -60,8 +76,7 @@ const App = () => {
           <Route path="test" element={<ColorTest />} />
           <Route path="product-detail/:id" element={<ProductDetails />} />
 
-          {/* ============= USER PROTECTED ROUTES ============= */}
-
+          {/* USER ROUTES */}
           <Route
             path="cart"
             element={
@@ -89,8 +104,7 @@ const App = () => {
             }
           />
 
-          {/* ============= ADMIN ROUTES ============= */}
-
+          {/* ADMIN */}
           <Route path="admin" element={<Admin />} />
 
           <Route
@@ -121,7 +135,7 @@ const App = () => {
           />
         </Route>
       </Routes>
-    </>
+    </ThemeProvider>
   );
 };
 

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeFromCart } from "../redux/slices/cartSlice";
 import EmptyCart from "../ui/EmptyCart";
 import { useNavigate } from "react-router-dom";
+import SelectTenure from "../components/SelectTenure";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -118,7 +119,9 @@ const Cart = () => {
           </div>
         </div>
 
-        <hr className="border-[var(--border-light)]" />
+        <hr className="border-[var(--border-light)] mb-4" />
+
+        <SelectTenure/>
 
         <div className="text-[var(--text-secondary)] mt-4 space-y-2">
           <p className="flex justify-between">
