@@ -7,6 +7,7 @@ const getInitialTheme = () => {
     return savedTheme === "dark";
   }
 
+  // detect system theme
   return window.matchMedia("(prefers-color-scheme: dark)").matches;
 };
 
@@ -18,16 +19,6 @@ const themeSlice = createSlice({
   name: "theme",
   initialState,
   reducers: {
-    setTheme: (state, action) => {
-      state.darkMode = action.payload;
-
-      if (state.darkMode) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    },
-
     toggleTheme: (state) => {
       state.darkMode = !state.darkMode;
 
@@ -42,5 +33,5 @@ const themeSlice = createSlice({
   },
 });
 
-export const { toggleTheme, setTheme } = themeSlice.actions;
+export const { toggleTheme } = themeSlice.actions;
 export default themeSlice.reducer;

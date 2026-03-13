@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
-import { setTheme } from "./redux/slices/themeSlice";
 
 import Root from "./layouts/Root";
 import Home from "./pages/Home";
@@ -26,20 +25,16 @@ import ScrollToTop from "./utils/ScrollToTop";
 import SmoothScroll from "./utils/SmoothScroll ";
 
 const App = () => {
-  const dispatch = useDispatch();
-  const { darkMode } = useSelector((state) => state.theme);
+  const darkMode = useSelector((state) => state.theme.darkMode);
 
+  // Apply dark class to html element
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-    const handleChange = (e) => {
-      dispatch(setTheme(e.matches));
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, [dispatch]);
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);
 
   return (
     <>
@@ -65,7 +60,8 @@ const App = () => {
           <Route path="test" element={<ColorTest />} />
           <Route path="product-detail/:id" element={<ProductDetails />} />
 
-          {/* USER ROUTES */}
+          {/* ============= USER PROTECTED ROUTES ============= */}
+
           <Route
             path="cart"
             element={
@@ -93,7 +89,8 @@ const App = () => {
             }
           />
 
-          {/* ADMIN ROUTES */}
+          {/* ============= ADMIN ROUTES ============= */}
+
           <Route path="admin" element={<Admin />} />
 
           <Route
