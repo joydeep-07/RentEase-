@@ -3,12 +3,15 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { data } from "../utils/data";
 import { Star, ShoppingCart } from "lucide-react";
 import { toast } from "sonner";
+import { useDispatch } from "react-redux";
+import { setCheckoutProduct } from "../redux/slices/checkoutSlice";
 
 const ProductDetails = () => {
   const { id } = useParams();
   const product = data.find((item) => item.id === Number(id));
   const navigate = useNavigate();
   const [duration, setDuration] = useState(3);
+  const dispatch = useDispatch();
 
   if (!product) {
     return (
@@ -32,13 +35,24 @@ const ProductDetails = () => {
 
   const isOutOfStock = product.isOutOfStock || product.totalStock <= 0;
 
-  const handleButtonClick = () => {
-    if (isOutOfStock) {
-      toast.error("This product is currently out of stock");
-      return;
-    }
-    navigate("/payment");
-  };
+ const handleButtonClick = () => {
+   if (isOutOfStock) {
+     toast.error("This product is currently out of stock");
+     return;
+   }
+
+   // dispatch product data to Redux
+   dispatch(
+     setCheckoutProduct({
+       product,
+       duration,
+       totalRent,
+       totalAmount,
+     }),
+   );
+
+   navigate("/payment");
+ };
 
   return (
     <div className="max-w-7xl mx-auto py-8 md:py-10 px-4 sm:px-6">

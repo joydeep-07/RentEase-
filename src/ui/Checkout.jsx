@@ -1,21 +1,37 @@
 import React, { useState } from "react";
 import { ShieldCheck, Lock, ChevronRight } from "lucide-react";
+import { useSelector } from "react-redux";
 
 const Checkout = () => {
   const [payment, setPayment] = useState("card");
+   const checkout = useSelector((state) => state.checkout);
+   const { product, duration, totalRent, totalAmount } = checkout;
+
+    if (!product) {
+      return (
+        <h1 className="text-center mt-20 text-2xl font-semibold text-red-600">
+          No product selected for checkout
+        </h1>
+      );
+    }
+
 
   return (
     <div className="min-h-screen bg-[var(--bg-main)] p-6">
       {/* Header */}
       <div className="max-w-7xl mx-auto flex items-center justify-between mb-6">
-        
-
         <div className="flex items-center gap-4 text-sm text-[var(--text-secondary)]">
           <span className="bg-[var(--text-main)] text-[var(--bg-main)] w-6 h-6 flex items-center justify-center rounded-full">
             1
           </span>
           Cart
-          <span> <ChevronRight size={16} className="text-[var(--text-secondary)] "/> </span>
+          <span>
+            {" "}
+            <ChevronRight
+              size={16}
+              className="text-[var(--text-secondary)] "
+            />{" "}
+          </span>
           <span className="bg-[var(--text-main)] text-[var(--bg-main)] w-6 h-6 flex items-center justify-center rounded-full">
             2
           </span>
@@ -31,14 +47,11 @@ const Checkout = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* LEFT SECTION */}
         <div className="lg:col-span-2 space-y-6">
-         
-
           {/* Shipping */}
           <div className="bg-[var(--bg-card)]/50 p-6 rounded-lg border border-[var(--border-light)]/50 space-y-4">
-            <h3 className="font-semibold text-lg text-[var(--text-main)]">
-              Shipping Information
+            <h3 className="text-sm uppercase text-[var(--text-muted)] mb-8">
+              shipping information
             </h3>
-
             <div className="grid grid-cols-2 gap-4">
               <input
                 placeholder="First Name"
@@ -93,7 +106,7 @@ const Checkout = () => {
 
           {/* Payment */}
           <div className="bg-[var(--bg-card)]/50 p-6 rounded-lg border border-[var(--border-light)]/50 space-y-4">
-            <h3 className="font-semibold text-lg text-[var(--text-main)]">
+            <h3 className="text-sm uppercase text-[var(--text-muted)] mb-8">
               Payment Method
             </h3>
 
@@ -135,14 +148,30 @@ const Checkout = () => {
 
             {payment === "card" && (
               <>
-                <input placeholder="Card Number" className="input w-full" />
+                <input
+                  type="text"
+                  placeholder="Card Number"
+                  className="w-full px-4 py-2.5 rounded-md border border-[var(--border-light)]/50 bg-[var(--bg-secondary)] text-[var(--text-main)] placeholder:text-[var(--text-secondary)] outline-none transition-all focus:border-[var(--accent-primary)] focus:ring-2 focus:ring-[var(--accent-primary)]/20"
+                />
 
-                <div className="grid grid-cols-2 gap-4">
-                  <input placeholder="MM/YY" className="input" />
-                  <input placeholder="CVC" className="input" />
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <input
+                    type="text"
+                    placeholder="MM/YY"
+                    className="w-full px-4 py-2.5 rounded-md border border-[var(--border-light)]/50 bg-[var(--bg-secondary)] text-[var(--text-main)] placeholder:text-[var(--text-secondary)] outline-none transition-all focus:border-[var(--accent-primary)] focus:ring-2 focus:ring-[var(--accent-primary)]/20"
+                  />
+                  <input
+                    type="text"
+                    placeholder="CVC"
+                    className="w-full px-4 py-2.5 rounded-md border border-[var(--border-light)]/50 bg-[var(--bg-secondary)] text-[var(--text-main)] placeholder:text-[var(--text-secondary)] outline-none transition-all focus:border-[var(--accent-primary)] focus:ring-2 focus:ring-[var(--accent-primary)]/20"
+                  />
                 </div>
 
-                <input placeholder="Name on Card" className="input w-full" />
+                <input
+                  type="text"
+                  placeholder="Name on Card"
+                  className="w-full px-4 py-2.5 rounded-md border border-[var(--border-light)]/50 bg-[var(--bg-secondary)] text-[var(--text-main)] placeholder:text-[var(--text-secondary)] outline-none transition-all focus:border-[var(--accent-primary)] focus:ring-2 focus:ring-[var(--accent-primary)]/20"
+                />
               </>
             )}
           </div>
@@ -151,14 +180,41 @@ const Checkout = () => {
         {/* RIGHT SECTION */}
         <div className="space-y-6">
           {/* Order Summary */}
+          {/* Order Summary */}
           <div className="bg-[var(--bg-card)]/50 p-6 rounded-lg border border-[var(--border-light)]/50 space-y-4">
-            <h3 className="font-semibold text-lg text-[var(--text-main)]">
+            <h3 className="text-sm uppercase text-[var(--text-muted)] mb-8">
               Order Summary
             </h3>
 
-            <OrderItem name="iPhone 15 Pro Max" price="$1199" qty="1" />
-            <OrderItem name="AirPods Pro 3" price="$249" qty="2" />
-            <OrderItem name="Apple Watch Series 11" price="$399" qty="1" out />
+            <div className="flex items-center gap-4 border-b border-[var(--border-soft)] pb-3">
+              {/* Product Image */}
+              <div className="w-20 h-20 rounded overflow-hidden border border-[var(--border-light)]">
+                <img
+                  src={product.image}
+                  alt={product.productName}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Product Details */}
+              <div className="flex-1">
+                <p className="font-medium text-[var(--text-main)]">
+                  {product.productName}
+                </p>
+                <p className="text-sm text-[var(--text-muted)]">
+                  Duration: {duration} month{duration > 1 && "s"}
+                </p>
+                <p className="text-sm text-[var(--text-muted)]">
+                  Monthly Rent: ₹
+                  {(product.pricePerDay * 30).toLocaleString("en-IN")}
+                </p>
+              </div>
+
+              {/* Total Amount */}
+              <p className="font-semibold text-[var(--text-main)]">
+                ₹{totalAmount.toLocaleString("en-IN")}
+              </p>
+            </div>
           </div>
 
           {/* Order Total */}
