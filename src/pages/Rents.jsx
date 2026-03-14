@@ -1,8 +1,13 @@
 import React from 'react'
+import ActiveRents from '../ui/ActiveRents'
+import Dashboard from '../ui/Dashboard'
 
 const Rents = () => {
   return (
-    <div>Rents</div>
+    <div>
+      <ActiveRents/>
+      {/* <Dashboard/> */}
+    </div>
   )
 }
 

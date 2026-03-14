@@ -19,7 +19,7 @@ const UserDetail = () => {
   const menuItems = [
     { label: "Profile", icon: Layout, path: "/profile" },
     { label: "Your Rents", icon: Package, path: "/rents" },
-    { label: "Become a seller", icon: PlusSquare, path: "/seller" },
+    // { label: "Become a seller", icon: PlusSquare, path: "/seller" },
     { type: "divider" },
     { label: "Logout", icon: LogOut, danger: true },
   ];
