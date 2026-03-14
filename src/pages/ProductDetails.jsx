@@ -37,11 +37,9 @@ const ProductDetails = () => {
 
  const handleButtonClick = () => {
    if (isOutOfStock) {
-     toast.error("This product is currently out of stock");
+    toast.error("Out Of Stock !")
      return;
    }
-
-   // dispatch product data to Redux
    dispatch(
      setCheckoutProduct({
        product,
@@ -231,7 +229,6 @@ const ProductDetails = () => {
           {/* Button is kept – logic changed */}
           <button
             onClick={handleButtonClick}
-            disabled={isOutOfStock}
             className={`w-full flex items-center justify-center gap-3 py-4 rounded-full font-medium text-lg transition ${
               isOutOfStock
                 ? "bg-gray-400 cursor-not-allowed text-gray-700"

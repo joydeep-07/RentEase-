@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ShieldCheck, Lock, ChevronRight } from "lucide-react";
 import { useSelector } from "react-redux";
+import EmptyCart from "./EmptyCart";
 
 const Checkout = () => {
   const [payment, setPayment] = useState("card");
@@ -9,9 +10,7 @@ const Checkout = () => {
 
     if (!product) {
       return (
-        <h1 className="text-center mt-20 text-2xl font-semibold text-red-600">
-          No product selected for checkout
-        </h1>
+       <EmptyCart/>
       );
     }
 
@@ -38,7 +37,7 @@ const Checkout = () => {
           Checkout
         </div>
 
-        <div className="flex items-center gap-2 text-sm text-[var(--text-muted)]">
+        <div className="flex items-center gap-2 text-sm text-[var(--accent-green)]">
           <ShieldCheck size={16} />
           Secure checkout
         </div>
