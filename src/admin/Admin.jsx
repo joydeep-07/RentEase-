@@ -11,6 +11,7 @@ const Admin = () => {
   const otpRefs = useRef([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const [email, setEmail] = useState("");
   const [otpSent, setOtpSent] = useState(false);
   const [timer, setTimer] = useState(120);
@@ -55,16 +56,17 @@ const Admin = () => {
     setTimer(120);
   };
 
- const handleLogin = () => {
-   const enteredOtp = otpRefs.current.map((input) => input.value).join("");
+  const handleLogin = () => {
+    const enteredOtp = otpRefs.current.map((input) => input.value).join("");
 
-   if (email === DEMO_EMAIL && enteredOtp === DEMO_OTP) {
-     dispatch(loginAdmin());
-     navigate("/seller");
-   } else {
-     alert("Invalid email or OTP (Demo OTP: 123456)");
-   }
- };
+    if (email === DEMO_EMAIL && enteredOtp === DEMO_OTP) {
+      dispatch(loginAdmin());
+      navigate("/seller");
+    } else {
+      alert("Invalid email or OTP (Demo OTP: 123456)");
+    }
+  };
+
   useEffect(() => {
     if (otpSent && timer > 0) {
       const interval = setInterval(() => setTimer((prev) => prev - 1), 1000);
@@ -74,13 +76,13 @@ const Admin = () => {
 
   return (
     <div
-      className="py-15 flex items-center justify-center font-sans"
+      className="py-10 md:py-16 flex items-center justify-center font-sans px-4"
       style={{ backgroundColor: "var(--bg-main)" }}
     >
-      <div className="w-full max-w-6xl flex rounded-2xl overflow-hidden h-[600px]">
+      <div className="w-full max-w-6xl flex flex-col lg:flex-row rounded-sm overflow-hidden">
         {/* LEFT SIDE */}
         <div
-          className="w-2/3 relative flex flex-col justify-between py-12 px-12 overflow-hidden"
+          className="lg:w-2/3 w-full relative hidden md:flex flex-col justify-between py-8 md:py-12 px-6 md:px-12"
           style={{ backgroundColor: "var(--bg-secondary)" }}
         >
           <div className="flex flex-1 items-center justify-center">
@@ -88,13 +90,13 @@ const Admin = () => {
               animationData={Heartrate}
               loop
               autoplay
-              className="w-80 h-80"
+              className="w-48 h-48 md:w-72 md:h-72 lg:w-80 lg:h-80"
             />
           </div>
 
-          <div className="z-10 px-2 pb-4">
+          <div className="z-10 px-2 pb-4 text-center lg:text-left">
             <h2
-              className="text-3xl mb-4 font-heading leading-tight"
+              className="text-2xl md:text-3xl mb-4 font-heading leading-tight"
               style={{ color: "var(--text-main)" }}
             >
               <span className="text-[var(--accent-primary)]">Secure</span>{" "}
@@ -107,7 +109,7 @@ const Admin = () => {
             </h2>
 
             <p
-              className="text-base leading-relaxed"
+              className="text-sm md:text-base leading-relaxed"
               style={{ color: "var(--text-secondary)" }}
             >
               Manage properties, tenants, and rental agreements efficiently with
@@ -117,19 +119,19 @@ const Admin = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="w-1/2 p-12 flex items-start relative flex-col justify-center bg-[var(--bg-secondary)]/50">
-          <div className="z-10 w-full h-full">
-            <div className="mb-12">
-              <h2 className="text-3xl font-heading mb-2 text-[var(--accent-primary)]">
+        <div className="lg:w-1/2 w-full p-6 md:p-10 flex flex-col justify-center bg-[var(--bg-secondary)]/50">
+          <div className="w-full">
+            <div className="mb-10">
+              <h2 className="text-2xl md:text-3xl font-heading mb-2 text-[var(--accent-primary)]">
                 Admin Verification
               </h2>
-              <p className="text-sm mb-2 text-[var(--text-secondary)]">
+              <p className="text-sm text-[var(--text-secondary)]">
                 Enter your credentials to access the dashboard
               </p>
             </div>
 
             {/* EMAIL */}
-            <div className="mb-6 flex flex-col items-start gap-2 w-full">
+            <div className="mb-6 flex flex-col gap-2 w-full">
               <label
                 className="block text-sm font-medium"
                 style={{ color: "var(--text-main)" }}
@@ -137,7 +139,7 @@ const Admin = () => {
                 Email
               </label>
 
-              <div className="flex w-full gap-2">
+              <div className="flex flex-col sm:flex-row w-full gap-2">
                 <div className="relative flex-1">
                   <input
                     type="email"
@@ -177,7 +179,7 @@ const Admin = () => {
             </div>
 
             {/* OTP INPUTS */}
-            <div className="flex justify-between mb-6">
+            <div className="flex justify-between gap-2 mb-6 flex-wrap sm:flex-nowrap">
               {Array.from({ length: 6 }).map((_, index) => (
                 <input
                   key={index}
@@ -187,7 +189,7 @@ const Admin = () => {
                   onInput={(e) => handleOTPInput(e, index)}
                   onKeyDown={(e) => handleOTPBackspace(e, index)}
                   onPaste={handleOTPPaste}
-                  className="w-12 h-12 border border-[var(--border-light)] focus:outline-none rounded text-center text-lg"
+                  className="w-10 h-10 sm:w-12 sm:h-12 border border-[var(--border-light)] focus:outline-none rounded text-center text-lg"
                 />
               ))}
             </div>
@@ -209,13 +211,13 @@ const Admin = () => {
             {/* LOGIN BUTTON */}
             <button
               onClick={handleLogin}
-              className="uppercase tracking-wider w-full focus:outline-none py-3 rounded-sm bg-[var(--accent-primary)] text-white text-sm font-medium"
+              className="uppercase tracking-wider w-full py-3 rounded-sm bg-[var(--accent-primary)] text-white text-sm font-medium"
             >
               Login
             </button>
 
             {otpSent && (
-              <p className="text-sm absolute bottom-5 text-center w-sm text-[var(--accent-primary)]">
+              <p className="text-sm mt-4 text-center text-[var(--accent-primary)]">
                 OTP sent to your email
               </p>
             )}
