@@ -19,7 +19,7 @@ const Featured = () => {
   });
 
   return (
-    <section className="w-full px-4 sm:px-6 lg:px-8 md:pt-16 pt-4 pb-10">
+    <section className="w-full px-4 sm:px-6 lg:px-8 md:pt-16 pt-4 pb-16">
       <div className="max-w-8xl md:px-15 mx-auto flex flex-col gap-8">
         <div>
           <h2

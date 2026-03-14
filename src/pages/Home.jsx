@@ -12,16 +12,16 @@ const Home = () => {
     <>
       <Hero />
       <Categories />
-      <Featured/>
-      <CurvedLoop
+      <Featured />
+      <WhyUs />
+      {/* <CurvedLoop
         marqueeText="Rent what you need when you need it without buying."
         speed={1}
         curveAmount={-310}
         direction="right"
         interactive
         className=" md:text-6xl text-8xl"
-      />
-      <WhyUs />
+      /> */}
       <Testimonials />
     </>
   );
