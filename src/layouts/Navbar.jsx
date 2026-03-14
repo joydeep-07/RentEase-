@@ -69,7 +69,7 @@ const Navbar = () => {
             onClick={openDrawer}
             className="md:hidden text-[var(--text-main)]"
           >
-            <SearchIcon size={20} />
+            <SearchIcon size={16} />
           </button>
 
 
@@ -97,7 +97,7 @@ const Navbar = () => {
           className="fixed inset-0 z-[100] bg-[var(--bg-main)] p-6 md:hidden flex flex-col justify-between"
         >
           {/* Search */}
-          <div>
+          <div className="">
             <Search onSearch={closeDrawer} />
           </div>
 

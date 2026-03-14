@@ -90,7 +90,7 @@ const UserDetail = () => {
      
       <button
         onClick={toggleDropdown}
-        className=" relative overflow-hidden px-8 sm:px-10 md:px-7 py-3 sm:py-3.5 md:py-3 rounded-full font-medium tracking-[0.1em] text-[var(--text-main)] hover:text-[var(--accent-blue)] hover:bg-[var(--accent-blue)]/5 backdrop-blur-md border border-[var(--border-light)] hover:border-[var(--accent-blue)]/20 shadow-sm transition-all duration-500 ease-out group w-full sm:w-auto"
+        className=" relative overflow-hidden py-3 sm:py-3.5 md:py-3 rounded-full font-medium tracking-[0.1em] text-[var(--text-main)] hover:text-[var(--accent-blue)] "
       >
         <span className="flex items-center uppercase text-xs justify-center gap-2">
          Hi, {user?.firstName}
