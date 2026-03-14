@@ -51,6 +51,13 @@ import wm1 from '../assets/wm/wm1.jpg';
 import wm2 from "../assets/wm/wm2.jpg";
 import wm3 from "../assets/wm/wm3.jpg";
 
+// BIKES
+import activa1 from "../assets/bike/activa1.jpg";
+import activa2 from "../assets/bike/activa2.jpg";
+import bike1 from "../assets/bike/bike1.jpg";
+import hunter350 from "../assets/bike/hunter350.jpg";
+import shotgun from "../assets/bike/shotgun.jpg";
+
 export const data = [
   // BEDS
   {
@@ -1291,6 +1298,135 @@ export const data = [
     pricePerDay: 160,
     securityDeposit: 2200,
     totalStock: 10,
+    availableFrom: "2026-03-01",
+    availableTill: null,
+    featured: true,
+    active: true,
+    isOutOfStock: false,
+  },
+  // BIKES
+  {
+    id: 44,
+    userId: "user1",
+    productName: "Honda Activa 6G Scooter",
+    itemType: "Bike",
+    brand: "Honda",
+    category: "Vehicle",
+    condition: "Good",
+    keywords: [
+      "scooter",
+      "honda",
+      "activa",
+      "automatic",
+      "city ride",
+      "fuel efficient",
+    ],
+    description:
+      "Reliable Honda Activa 6G scooter perfect for daily commuting. Smooth automatic transmission, excellent mileage, and comfortable seating make it ideal for city travel.",
+    image: activa1,
+    pricePerDay: 120,
+    securityDeposit: 2000,
+    totalStock: 2,
+    availableFrom: "2026-03-01",
+    availableTill: null,
+    featured: false,
+    active: true,
+    isOutOfStock: false,
+  },
+
+  {
+    id: 45,
+    userId: "user2",
+    productName: "Honda Activa 125 Premium",
+    itemType: "Bike",
+    brand: "Honda",
+    category: "Vehicle",
+    condition: "Like New",
+    keywords: [
+      "activa 125",
+      "honda",
+      "automatic",
+      "comfortable",
+      "city scooter",
+    ],
+    description:
+      "Premium Honda Activa 125 offering powerful performance with refined comfort. Great mileage and smooth handling make it a perfect scooter for daily urban rides.",
+    image: activa2,
+    pricePerDay: 130,
+    securityDeposit: 2200,
+    totalStock: 2,
+    availableFrom: "2026-03-01",
+    availableTill: null,
+    featured: false,
+    active: true,
+    isOutOfStock: false,
+  },
+
+  {
+    id: 46,
+    userId: "user3",
+    productName: "Yamaha FZ Street Bike",
+    itemType: "Bike",
+    brand: "Yamaha",
+    category: "Vehicle",
+    condition: "Good",
+    keywords: ["yamaha", "fz", "street bike", "sport", "fuel efficient"],
+    description:
+      "Stylish Yamaha FZ street bike designed for smooth city rides and sporty performance. Comfortable seating and powerful engine make it a favorite for riders.",
+    image: bike1,
+    pricePerDay: 180,
+    securityDeposit: 3000,
+    totalStock: 1,
+    availableFrom: "2026-03-01",
+    availableTill: null,
+    featured: false,
+    active: true,
+    isOutOfStock: false,
+  },
+
+  {
+    id: 47,
+    userId: "user1",
+    productName: "Royal Enfield Hunter 350",
+    itemType: "Bike",
+    brand: "Royal Enfield",
+    category: "Vehicle",
+    condition: "Like New",
+    keywords: ["royal enfield", "hunter 350", "cruiser", "touring", "powerful"],
+    description:
+      "Royal Enfield Hunter 350 offering classic styling with modern performance. Ideal for long rides and highway cruising with a powerful engine and comfortable ride quality.",
+    image: hunter350,
+    pricePerDay: 350,
+    securityDeposit: 5000,
+    totalStock: 1,
+    availableFrom: "2026-03-01",
+    availableTill: null,
+    featured: true,
+    active: true,
+    isOutOfStock: false,
+  },
+
+  {
+    id: 48,
+    userId: "user2",
+    productName: "Royal Enfield Shotgun 650",
+    itemType: "Bike",
+    brand: "Royal Enfield",
+    category: "Vehicle",
+    condition: "New",
+    keywords: [
+      "shotgun 650",
+      "royal enfield",
+      "premium bike",
+      "touring",
+      "650cc",
+    ],
+    description:
+      "Premium Royal Enfield Shotgun 650 with powerful twin-cylinder engine. Perfect for highway touring and premium riding experience with strong road presence.",
+    image: shotgun,
+    pricePerDay: 420,
+    securityDeposit: 6000,
+    totalStock: 1,
     availableFrom: "2026-03-01",
     availableTill: null,
     featured: false,
