@@ -21,37 +21,53 @@ const Categories = () => {
     navigate(`/product-detail/${id}`);
   };
 
-  useEffect(() => {
-    cardsRef.current.forEach((card) => {
-      if (!card) return;
-      const image = card.querySelector(".card-image");
-      const wishlist = card.querySelector(".wishlist-btn");
+ useEffect(() => {
+   cardsRef.current.forEach((card) => {
+     if (!card) return;
 
-      gsap.set(wishlist, {
-        x: 40,
-        opacity: 0,
-        visibility: "hidden",
-        pointerEvents: "none",
-      });
+     const image = card.querySelector(".card-image");
+     const wishlist = card.querySelector(".wishlist-btn");
 
-      card.addEventListener("mouseenter", () => {
-        gsap.set(wishlist, { visibility: "visible", pointerEvents: "auto" });
-        gsap.to(image, { scale: 1.1, duration: 0.5, ease: "power3.out" });
-        gsap.to(wishlist, { x: 0, opacity: 1, duration: 0.35 });
-      });
+     if (wishlist) {
+       gsap.set(wishlist, {
+         x: 40,
+         opacity: 0,
+         visibility: "hidden",
+         pointerEvents: "none",
+       });
+     }
 
-      card.addEventListener("mouseleave", () => {
-        gsap.to(image, { scale: 1, duration: 0.5 });
-        gsap.to(wishlist, {
-          x: 40,
-          opacity: 0,
-          duration: 0.25,
-          onComplete: () =>
-            gsap.set(wishlist, { visibility: "hidden", pointerEvents: "none" }),
-        });
-      });
-    });
-  }, [sampleItems]);
+     card.addEventListener("mouseenter", () => {
+       if (image) {
+         gsap.to(image, { scale: 1.1, duration: 0.5, ease: "power3.out" });
+       }
+
+       if (wishlist) {
+         gsap.set(wishlist, { visibility: "visible", pointerEvents: "auto" });
+         gsap.to(wishlist, { x: 0, opacity: 1, duration: 0.35 });
+       }
+     });
+
+     card.addEventListener("mouseleave", () => {
+       if (image) {
+         gsap.to(image, { scale: 1, duration: 0.5 });
+       }
+
+       if (wishlist) {
+         gsap.to(wishlist, {
+           x: 40,
+           opacity: 0,
+           duration: 0.25,
+           onComplete: () =>
+             gsap.set(wishlist, {
+               visibility: "hidden",
+               pointerEvents: "none",
+             }),
+         });
+       }
+     });
+   });
+ }, [sampleItems]);
 
   return (
     <section className="w-full px-4 sm:px-6 lg:px-8 md:pt-16 pt-4 pb-10">

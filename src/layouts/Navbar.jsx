@@ -72,24 +72,6 @@ const Navbar = () => {
             <SearchIcon size={20} />
           </button>
 
-          {isLogin && (
-            <Link
-              to="/cart"
-              className="relative flex items-center text-[var(--text-secondary)] p-2"
-            >
-              <ShoppingCart size={19} />
-
-              <span
-                className="absolute -top-1 -right-1
-                bg-[var(--sale)]
-                text-white text-xs
-                px-1.5 py-[1px]
-                rounded-full"
-              >
-                2
-              </span>
-            </Link>
-          )}
 
           {isLogin && <UserDetail />}
 

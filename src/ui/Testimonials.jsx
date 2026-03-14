@@ -61,8 +61,8 @@ const Testimonials = () => {
                 </div>
 
                 <p
-                  className={`text-[var(--text-secondary)] text-sm leading-relaxed ${
-                    index === 0 || index === 3 ? "max-w-xl mb-14" : "mb-8"
+                  className={`text-[var(--text-secondary)] text-sm text-justify leading-relaxed ${
+                    index === 0 || index === 3 ? " mb-14" : "mb-8"
                   }`}
                 >
                   {testimonial.text}

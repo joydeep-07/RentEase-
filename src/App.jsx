@@ -9,7 +9,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Root from "./layouts/Root";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
-import Cart from "./pages/Cart";
 import ColorTest from "./pages/ColorTest";
 import Profile from "./pages/Profile";
 import SellerDashboard from "./pages/SellerDashboard";
@@ -76,16 +75,6 @@ const App = () => {
           <Route path="products" element={<Products />} />
           <Route path="test" element={<ColorTest />} />
           <Route path="product-detail/:id" element={<ProductDetails />} />
-
-          {/* USER ROUTES */}
-          <Route
-            path="cart"
-            element={
-              <ProtectedRoute>
-                <Cart />
-              </ProtectedRoute>
-            }
-          />
 
           <Route
             path="rents"
